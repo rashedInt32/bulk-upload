@@ -2,9 +2,11 @@
 import { useState, useCallback } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { parseFile } from '../utils/fileParser'
+import { useStore } from './useStore'
 import type { FileError, EmployeeData, FileUploadState } from '../types'
 
 export function useFileUpload() {
+  const { setFileData } = useStore((state) => state)
   const [state, setState] = useState<FileUploadState>({
     isModalOpen: false,
     file: null,
@@ -83,6 +85,7 @@ export function useFileUpload() {
 
       const parsedData = await parseFile(state.file)
       setPartialState({ fileData: parsedData as EmployeeData[] })
+      setFileData(parsedData as EmployeeData[])
 
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 2000))
