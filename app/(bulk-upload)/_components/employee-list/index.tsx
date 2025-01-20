@@ -269,29 +269,18 @@ export function EmployeeList({ data }: EmployeeListProps) {
             </SelectContent>
           </Select>
 
-          <AnimatePresence mode="wait">
-            {isFiltering && (
-              <motion.div
-                initial={{ width: 0, opacity: 0 }}
-                animate={{ width: 40, opacity: 1 }}
-                exit={{ width: 0, opacity: 0 }}
-                transition={{
-                  duration: 0.2,
-                  ease: 'easeOut',
-                }}
-                className="flex items-center"
+          {isFiltering && (
+            <div className="flex items-center">
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={handleReset}
+                className="h-9 w-9 border-line rounded-[12px] hover:bg-surface2 hover:text-primary flex-shrink-0"
               >
-                <Button
-                  variant="outline"
-                  size="icon"
-                  onClick={handleReset}
-                  className="h-9 w-9 border-line rounded-[12px] hover:bg-surface2 hover:text-primary flex-shrink-0"
-                >
-                  <RotateCcw className="h-4 w-4" />
-                </Button>
-              </motion.div>
-            )}
-          </AnimatePresence>
+                <RotateCcw className="h-4 w-4" />
+              </Button>
+            </div>
+          )}
         </div>
       </div>
 
