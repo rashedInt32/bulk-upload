@@ -56,10 +56,8 @@ export const TABLE_COLUMNS: TableColumn[] = [
 
       return (
         <div className="flex items-center gap-3">
-          <div className="w-7 h-7 rounded-full bg-primary/10 border border-line flex items-center justify-center flex-shrink-0">
-            <span className="text-sm font-semibold text-primary">
-              {initials}
-            </span>
+          <div className="w-7 h-7 rounded-full bg-grey-200 border border-line flex items-center justify-center flex-shrink-0">
+            <span className="text-sm font-bold text-primary">{initials}</span>
           </div>
           <span className="font-semibold truncate text-sm text-grey-900">
             {value}

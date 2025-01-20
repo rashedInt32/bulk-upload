@@ -10,6 +10,7 @@ import {
   ChevronRight,
   Search,
   RotateCcw,
+  Loader2,
 } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 import {
@@ -41,6 +42,8 @@ export function EmployeeList({ data }: EmployeeListProps) {
   const [searchQuery, setSearchQuery] = useState('')
   const [statusFilter, setStatusFilter] = useState<string>('all')
   const [roleFilter, setRoleFilter] = useState<string>('all')
+  const [isLoading, setIsLoading] = useState(false)
+  const [filteredData, setFilteredData] = useState(data)
 
   const itemsPerPage = 15
   const headerCheckboxRef = useRef<HTMLButtonElement>(null)
@@ -61,24 +64,49 @@ export function EmployeeList({ data }: EmployeeListProps) {
   const isFiltering =
     searchQuery !== '' || statusFilter !== 'all' || roleFilter !== 'all'
 
-  // Filter data based on search and filters
-  const filteredData = data.filter((item) => {
-    const matchesSearch =
-      searchQuery === '' ||
-      Object.values(item).some((value) =>
-        value?.toString().toLowerCase().includes(searchQuery.toLowerCase())
-      )
+  // Filter data when filters change
+  useEffect(() => {
+    const filterData = async () => {
+      setIsLoading(true)
 
-    const matchesStatus =
-      statusFilter === 'all' ||
-      item.Status?.toLowerCase() === statusFilter.toLowerCase()
+      // Simulate API delay
+      await new Promise((resolve) => setTimeout(resolve, 500))
 
-    const matchesRole =
-      roleFilter === 'all' ||
-      item.Role?.toLowerCase() === roleFilter.toLowerCase()
+      const filtered = data.filter((item) => {
+        const matchesSearch =
+          searchQuery === '' ||
+          Object.values(item).some((value) =>
+            value?.toString().toLowerCase().includes(searchQuery.toLowerCase())
+          )
 
-    return matchesSearch && matchesStatus && matchesRole
-  })
+        const matchesStatus =
+          statusFilter === 'all' ||
+          item.Status?.toLowerCase() === statusFilter.toLowerCase()
+
+        const matchesRole =
+          roleFilter === 'all' ||
+          item.Role?.toLowerCase() === roleFilter.toLowerCase()
+
+        return matchesSearch && matchesStatus && matchesRole
+      })
+
+      setFilteredData(filtered)
+      setCurrentPage(1) // Reset to first page when filters change
+      setIsLoading(false)
+    }
+
+    filterData()
+  }, [searchQuery, statusFilter, roleFilter, data])
+
+  // Handle pagination change with loading state
+  const handlePageChange = async (page: number) => {
+    setIsLoading(true)
+    // Simulate API delay
+    await new Promise((resolve) => setTimeout(resolve, 300))
+    setCurrentPage(page)
+    setSelectedRows(new Set())
+    setIsLoading(false)
+  }
 
   // Sort filtered data
   const sortedData = [...filteredData].sort((a, b) => {
@@ -99,16 +127,9 @@ export function EmployeeList({ data }: EmployeeListProps) {
   const totalPages = Math.ceil(sortedData.length / itemsPerPage)
   const startIndex = (currentPage - 1) * itemsPerPage
   const endIndex = startIndex + itemsPerPage
-
-  // Get current page data
   const paginatedData = sortedData.slice(startIndex, endIndex)
 
-  // Pagination handlers
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page)
-    setSelectedRows(new Set()) // Clear selection when changing pages
-  }
-
+  // Update pagination handlers
   const handlePrevPage = () => {
     if (currentPage > 1) {
       handlePageChange(currentPage - 1)
@@ -286,88 +307,130 @@ export function EmployeeList({ data }: EmployeeListProps) {
 
       <div className="space-y-4">
         <div className="bg-white rounded-[16px] overflow-hidden border border-line">
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="border-b border-line bg-surface2">
-                  {columns.map((column) => (
-                    <th
-                      key={column.key}
-                      className="text-left py-4 text-base font-semibold last:pr-4 pl-[12px]"
-                      style={{ width: column.width }}
-                    >
-                      {column.renderHeader
-                        ? column.renderHeader()
-                        : column.label}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {paginatedData.map((row, index) => (
-                  <tr
-                    key={row['Employee ID']}
-                    className={`${
-                      index !== paginatedData.length - 1
-                        ? 'border-b border-line'
-                        : ''
-                    } transition-colors ${
-                      selectedRows.has(row['Employee ID'].toString())
-                        ? 'bg-primary/5'
-                        : 'hover:bg-surface2/50'
-                    }`}
-                  >
+          <div className="relative">
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b border-line bg-surface2">
                     {columns.map((column) => (
-                      <td
+                      <th
                         key={column.key}
-                        className="py-4 max-w-0 last:pr-4 pl-[12px]"
+                        className="text-left py-4 text-base font-semibold last:pr-4 pl-[12px]"
+                        style={{ width: column.width }}
                       >
-                        {column.render
-                          ? column.render(row[column.key], row)
-                          : row[column.key]?.toString() || '-'}
-                      </td>
+                        {column.renderHeader
+                          ? column.renderHeader()
+                          : column.label}
+                      </th>
                     ))}
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {paginatedData.map((row, index) => (
+                    <tr
+                      key={row['Employee ID']}
+                      className={`${
+                        index !== paginatedData.length - 1
+                          ? 'border-b border-line'
+                          : ''
+                      } transition-colors ${
+                        selectedRows.has(row['Employee ID'].toString())
+                          ? 'bg-primary/5'
+                          : 'hover:bg-surface2/50'
+                      }`}
+                    >
+                      {columns.map((column) => (
+                        <td
+                          key={column.key}
+                          className="py-4 max-w-0 last:pr-4 pl-[12px]"
+                        >
+                          {column.render
+                            ? column.render(row[column.key], row)
+                            : row[column.key]?.toString() || '-'}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <AnimatePresence>
+              {isLoading && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute inset-0 bg-surface2 flex items-center justify-center"
+                >
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Loader2 className="h-[88px] w-[88px] text-primary animate-spin" />
+                  </motion.div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
 
-        {/* Pagination - now outside the table box */}
+        {/* Pagination with animations */}
         <div className="flex items-center justify-between px-4">
-          <div className="text-sm text-grey-400">
+          <motion.div
+            key={`${startIndex}-${endIndex}`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.2 }}
+            className="text-sm text-grey-400"
+          >
             Showing {startIndex + 1}-{Math.min(endIndex, sortedData.length)} of{' '}
             {sortedData.length}
-          </div>
+          </motion.div>
           <div className="flex items-center gap-2">
-            <button
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               onClick={handlePrevPage}
               disabled={currentPage === 1}
               className="p-2 rounded-lg hover:bg-surface2 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <ChevronLeft className="w-5 h-5 text-grey-400" />
-            </button>
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-              <button
-                key={page}
-                onClick={() => handlePageChange(page)}
-                className={`w-10 h-10 rounded-lg text-sm font-medium ${
-                  currentPage === page
-                    ? 'bg-primary text-white'
-                    : 'hover:bg-surface2 text-grey-400'
-                }`}
-              >
-                {page}
-              </button>
-            ))}
-            <button
+            </motion.button>
+            <AnimatePresence mode="wait">
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                (page) => (
+                  <motion.button
+                    key={page}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.8 }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => handlePageChange(page)}
+                    className={`w-10 h-10 rounded-lg text-sm font-medium ${
+                      currentPage === page
+                        ? 'bg-primary text-white'
+                        : 'hover:bg-surface2 text-grey-400'
+                    }`}
+                  >
+                    {page}
+                  </motion.button>
+                )
+              )}
+            </AnimatePresence>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               onClick={handleNextPage}
               disabled={currentPage === totalPages}
               className="p-2 rounded-lg hover:bg-surface2 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <ChevronRight className="w-5 h-5 text-grey-400" />
-            </button>
+            </motion.button>
           </div>
         </div>
       </div>
