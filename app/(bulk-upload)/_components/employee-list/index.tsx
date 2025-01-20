@@ -251,57 +251,78 @@ export function EmployeeList({ data }: EmployeeListProps) {
           )}
         </div>
 
-        <div className="flex items-center gap-3">
-          <div className="relative">
-            <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-grey-400" />
-            <Input
-              placeholder="Search employees..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-9 w-[280px] h-10"
-            />
-          </div>
-
-          <Select value={statusFilter} onValueChange={setStatusFilter}>
-            <SelectTrigger className="w-[180px] h-10">
-              <SelectValue placeholder="Filter by Status" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">All Statuses</SelectItem>
-              {uniqueStatuses.map((status) => (
-                <SelectItem key={status} value={status.toLowerCase()}>
-                  {status}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-
-          <Select value={roleFilter} onValueChange={setRoleFilter}>
-            <SelectTrigger className="w-[180px] h-10">
-              <SelectValue placeholder="Filter by Role" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="all">All Roles</SelectItem>
-              {uniqueRoles.map((role) => (
-                <SelectItem key={role} value={role.toLowerCase()}>
-                  {role}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-
-          {isFiltering && (
-            <div className="flex items-center">
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={handleReset}
-                className="h-9 w-9 border-line rounded-[12px] hover:bg-surface2 hover:text-primary flex-shrink-0"
-              >
-                <RotateCcw className="h-4 w-4" />
-              </Button>
+        <div className="flex items-center relative">
+          <motion.div
+            animate={{
+              x: isFiltering ? -54 : 0,
+            }}
+            transition={{
+              duration: 0.2,
+              ease: 'easeInOut',
+            }}
+            className="flex items-center gap-4"
+          >
+            <div className="relative">
+              <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-grey-400" />
+              <Input
+                placeholder="Search employee"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="pl-9 w-[240px] h-9"
+              />
             </div>
-          )}
+
+            <Select value={statusFilter} onValueChange={setStatusFilter}>
+              <SelectTrigger className="w-[auto] h-9 font-semibold">
+                <SelectValue placeholder="Filter by Status" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All Statuses</SelectItem>
+                {uniqueStatuses.map((status) => (
+                  <SelectItem key={status} value={status.toLowerCase()}>
+                    {status}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+
+            <Select value={roleFilter} onValueChange={setRoleFilter}>
+              <SelectTrigger className="w-[auto] h-9">
+                <SelectValue placeholder="Filter by Role" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all" className="font-semibold">
+                  All Roles
+                </SelectItem>
+                {uniqueRoles.map((role) => (
+                  <SelectItem key={role} value={role.toLowerCase()}>
+                    {role}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </motion.div>
+
+          <AnimatePresence>
+            {isFiltering && (
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 20 }}
+                transition={{ duration: 0.2 }}
+                className="absolute right-0 ml-4"
+              >
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={handleReset}
+                  className="h-9 w-9 bg-white border-line hover:border-red-500  transition-colors"
+                >
+                  <RotateCcw className="h-4 w-4 text-red-500" />
+                </Button>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
 
