@@ -37,6 +37,8 @@ export function EmployeeList({ data }: EmployeeListProps) {
   // Sort hook
   const { sortConfig, handleSort, sortedData } = useTableSort(filteredData)
 
+  console.log('sorted data', sortedData)
+
   // Pagination hook
   const {
     currentPage,
