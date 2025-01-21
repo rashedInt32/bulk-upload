@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils'
-import { analyzeDataByKey } from '../../utils/analyzeData'
+import { analyzeDataByKey } from '../../_utils/analyzeData'
 import { CircleChart } from './circle-chart'
 import { LineChart } from './line-chart'
 import { ParabolicChart } from './parabolic-chart'
@@ -52,6 +52,7 @@ interface AnalyticsSectionProps {
 }
 
 function formatValue(value: string): string {
+  if (value === 'Active') return 'Active Employees'
   return value.replace(/-/g, ' ')
 }
 
@@ -92,7 +93,7 @@ function AnalyticsSection({
                 CHART_COLOR_VALUES[CHART_COLOR_VALUES.length - 1]
               }
               count={metric.count}
-              value={formatValue(metric.value)}
+              value={metric.value}
               variant={
                 index === 0
                   ? 'primary'

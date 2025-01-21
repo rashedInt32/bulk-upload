@@ -1,3 +1,5 @@
+import { CHART_COLOR_VALUES } from './constants'
+
 interface LineChartProps {
   metrics: {
     count: number
@@ -6,7 +8,7 @@ interface LineChartProps {
 }
 
 export function LineChart({ metrics }: LineChartProps) {
-  const colors = ['#00A3B1', '#FFB800', '#9747FF', '#94A3B8']
+  const colors = CHART_COLOR_VALUES
   const sortedMetrics = [...metrics].sort((a, b) => b.count - a.count)
   const height = 10
 

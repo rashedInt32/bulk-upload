@@ -1,5 +1,5 @@
 import { EmployeeData } from '../../types'
-import { TABLE_COLUMNS } from '../../utils/tableConfig'
+import { TABLE_COLUMNS } from '../../_utils/tableConfig'
 import { AnimatePresence, motion } from 'framer-motion'
 import { TableHeader } from './table-header'
 import { TableComponent } from './table'
@@ -36,8 +36,6 @@ export function EmployeeList({ data }: EmployeeListProps) {
 
   // Sort hook
   const { sortConfig, handleSort, sortedData } = useTableSort(filteredData)
-
-  console.log('sorted data', sortedData)
 
   // Pagination hook
   const {

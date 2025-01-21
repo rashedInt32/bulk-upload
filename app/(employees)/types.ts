@@ -15,7 +15,6 @@ export interface FileUploadState {
   file: File | null
   error: FileError | null
   isSubmitting: boolean
-  fileData: EmployeeData[] | null
 }
 
 export interface DropzoneProps {

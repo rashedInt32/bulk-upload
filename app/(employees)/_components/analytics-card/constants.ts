@@ -1,8 +1,8 @@
 export const CHART_COLORS = {
-  primary: '#00A3B1', // Teal
-  secondary: '#FFB800', // Yellow
-  tertiary: '#9747FF', // Purple
-  quaternary: '#94A3B8', // Gray
+  primary: '#02B9B0', // Teal
+  secondary: '#FAC905', // Yellow
+  tertiary: '#B774FC', // Purple
+  quaternary: '#B3BEBE', // Gray
 } as const
 
 // For ordered usage (like in arrays)

@@ -1,7 +1,7 @@
 'use client'
 import { useState, useCallback } from 'react'
 import { useDropzone } from 'react-dropzone'
-import { parseFile } from '../utils/fileParser'
+import { parseFile } from '../_utils/fileParser'
 import { useStore } from './useStore'
 import type { FileError, EmployeeData, FileUploadState } from '../types'
 
@@ -12,7 +12,6 @@ export function useFileUpload() {
     file: null,
     error: null,
     isSubmitting: false,
-    fileData: null,
   })
 
   const setPartialState = (partial: Partial<FileUploadState>) => {
@@ -83,7 +82,6 @@ export function useFileUpload() {
       })
 
       const parsedData = await parseFile(state.file)
-      setPartialState({ fileData: parsedData as EmployeeData[] })
 
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 2000))
@@ -111,8 +109,8 @@ export function useFileUpload() {
     setPartialState({
       file: null,
       error: null,
-      fileData: null,
     })
+    setFileData(null)
   }
 
   return {
