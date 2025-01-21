@@ -7,9 +7,9 @@ export default function BulkUploadPage() {
   const fileData = useStore((state) => state.fileData)
 
   return (
-    <div className="min-h-screen w-full flex flex-col justify-center p-8 bg-surface2">
+    <div className="min-h-screen w-full flex flex-col p-8 bg-surface2 max-w-[1220px] mx-auto">
       {fileData && (
-        <div className="flex gap-4 mb-6">
+        <div className="flex gap-4 pb-8">
           <AnalyticsCard
             data={fileData}
             analyzeKey="Nationality"

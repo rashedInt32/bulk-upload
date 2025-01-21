@@ -51,7 +51,7 @@ export function TableHeader({
       <div className="flex items-center relative flex-shrink-0">
         <motion.div
           animate={{
-            x: isFiltering ? -54 : 0,
+            x: isFiltering ? -52 : 0,
           }}
           transition={{
             duration: 0.2,
@@ -107,7 +107,7 @@ export function TableHeader({
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 20 }}
               transition={{ duration: 0.2 }}
-              className="absolute right-0 ml-4"
+              className="absolute right-0 ml-2"
             >
               <Button
                 variant="outline"

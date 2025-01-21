@@ -3,12 +3,14 @@ import { analyzeDataByKey } from '../../utils/analyzeData'
 import { CircleChart } from './circle-chart'
 import { LineChart } from './line-chart'
 import { ParabolicChart } from './parabolic-chart'
+import { CHART_COLOR_VALUES } from './constants'
 
 interface MetricItemProps {
   count: number
   value: string
   variant: 'primary' | 'secondary' | 'tertiary' | 'quaternary'
   total?: number
+  color: string
 }
 
 const variantStyles = {
@@ -18,11 +20,17 @@ const variantStyles = {
   quaternary: 'before:bg-grey-300',
 }
 
-function MetricItem({ count, value, variant, total = 0 }: MetricItemProps) {
+function MetricItem({
+  count,
+  value,
+  variant,
+  total = 0,
+  color,
+}: MetricItemProps) {
   return (
     <div
       className={cn(
-        'pl-3 pr-1 flex items-center gap-2 relative',
+        'pl-3 pr-1 flex  items-center gap-2 relative',
         'before:content-[""] before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2',
         'before:w-1 before:h-4 before:rounded-[4px]',
         variantStyles[variant]
@@ -77,21 +85,26 @@ function AnalyticsSection({
 
       <div className="flex items-center flex-wrap gap-3">
         {sortedMetrics.map((metric, index) => (
-          <MetricItem
-            key={metric.value}
-            count={metric.count}
-            value={formatValue(metric.value)}
-            variant={
-              index === 0
-                ? 'primary'
-                : index === 1
-                ? 'secondary'
-                : index === 2
-                ? 'tertiary'
-                : 'quaternary'
-            }
-            total={highestCount}
-          />
+          <div key={metric.value} className="pr-1">
+            <MetricItem
+              color={
+                CHART_COLOR_VALUES[index] ||
+                CHART_COLOR_VALUES[CHART_COLOR_VALUES.length - 1]
+              }
+              count={metric.count}
+              value={formatValue(metric.value)}
+              variant={
+                index === 0
+                  ? 'primary'
+                  : index === 1
+                  ? 'secondary'
+                  : index === 2
+                  ? 'tertiary'
+                  : 'quaternary'
+              }
+              total={highestCount}
+            />
+          </div>
         ))}
       </div>
     </div>

@@ -22,7 +22,7 @@ export default function BulkUploadLayout({
             // Handle button click
           }}
         />
-        <main>{children}</main>
+        <main className="bg-surface2">{children}</main>
       </div>
     </div>
   )

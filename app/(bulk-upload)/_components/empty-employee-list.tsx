@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 export const EmptyEmployeeList = ({ onClick }: { onClick: () => void }) => {
   return (
-    <div className="flex w-full items-center justify-center h-full">
+    <div className="flex w-full items-center h-full">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
