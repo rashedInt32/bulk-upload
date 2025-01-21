@@ -24,7 +24,7 @@ export default function Employees() {
     handleContinue,
     resetState,
   } = useFileUpload()
-  const [showSuccess, setShowSuccess] = useState(true)
+  const [showSuccess, setShowSuccess] = useState(false)
 
   // Show success modal when fileData is loaded
   useEffect(() => {
