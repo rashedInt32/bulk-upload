@@ -105,7 +105,7 @@ export const TABLE_COLUMNS: TableColumn[] = [
           }`}
         >
           <span
-            className="w-2 h-2 rounded-full mx-1"
+            className="hidden  w-2 h-2 rounded-full mx-1 xl:flex"
             style={{
               backgroundColor: 'currentColor',
             }}

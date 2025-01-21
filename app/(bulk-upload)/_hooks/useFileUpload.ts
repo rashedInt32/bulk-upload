@@ -44,7 +44,6 @@ export function useFileUpload() {
     const uploadedFile = acceptedFiles[0]
     if (uploadedFile) {
       setPartialState({ file: uploadedFile })
-      console.log('File uploaded:', uploadedFile)
     }
   }, [])
 
@@ -85,7 +84,6 @@ export function useFileUpload() {
 
       const parsedData = await parseFile(state.file)
       setPartialState({ fileData: parsedData as EmployeeData[] })
-      setFileData(parsedData as EmployeeData[])
 
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 2000))
@@ -96,7 +94,7 @@ export function useFileUpload() {
         file: null,
       })
 
-      console.log('Parsed data:', parsedData)
+      setFileData(parsedData as EmployeeData[])
     } catch (err: any) {
       setPartialState({
         error: {
