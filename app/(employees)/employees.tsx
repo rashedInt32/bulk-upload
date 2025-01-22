@@ -9,7 +9,7 @@ import { useStore } from './_hooks/useStore'
 import { SuccessModal } from './_components/success-modal'
 import { useState, useEffect } from 'react'
 
-export default function Employees() {
+export function Employees() {
   const { fileData } = useStore((state) => state)
   const {
     isModalOpen,

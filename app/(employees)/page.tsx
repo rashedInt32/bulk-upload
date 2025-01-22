@@ -1,4 +1,4 @@
-import Employees from './employees'
+import { Employees } from './employees'
 
 export default function EmployeesPage() {
   return (
