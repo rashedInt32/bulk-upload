@@ -3,7 +3,7 @@ import { analyzeDataByKey } from '../../_utils/analyzeData'
 import { CircleChart } from './circle-chart'
 import { LineChart } from './line-chart'
 import { ParabolicChart } from './parabolic-chart'
-import { CHART_COLOR_VALUES } from './constants'
+import { CHART_COLOR_VALUES, CHART_COLORS } from './constants'
 
 interface MetricItemProps {
   count: number

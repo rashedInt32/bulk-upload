@@ -74,7 +74,7 @@ export function TableHeader({
               <SelectValue placeholder="Filter by Status" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all">All Statuses</SelectItem>
+              <SelectItem value="all">All Status</SelectItem>
               {uniqueStatuses.map((status) => (
                 <SelectItem key={status} value={status.toLowerCase()}>
                   {status}

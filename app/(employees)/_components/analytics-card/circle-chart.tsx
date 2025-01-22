@@ -1,3 +1,5 @@
+import { CHART_COLOR_VALUES } from './constants'
+
 interface CircleChartProps {
   metrics: {
     count: number
@@ -7,7 +9,7 @@ interface CircleChartProps {
 }
 
 export function CircleChart({ metrics, size = 96 }: CircleChartProps) {
-  const colors = ['#00A3B1', '#FFB800', '#9747FF', '#94A3B8']
+  const colors = CHART_COLOR_VALUES
   const radius = size / 2
   const strokeWidth = 6
   const normalizedRadius = radius - strokeWidth / 2
@@ -41,7 +43,7 @@ export function CircleChart({ metrics, size = 96 }: CircleChartProps) {
         width={size}
         height={size}
         viewBox={`0 0 ${size} ${size}`}
-        className="transform -rotate-90"
+        className="transform rotate-90"
       >
         {segments.map((segment, index) => (
           <circle

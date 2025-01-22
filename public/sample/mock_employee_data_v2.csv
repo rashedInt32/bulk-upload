@@ -1,0 +1,101 @@
+Employee ID,Employee Profile,Email,Role,Status,Nationality,Employment Type
+KIX2268,Profile 23,employee1@company.com,Lead Growth,Active,PR,Contract
+LDD7660,Profile 6,employee2@company.com,Lead Designer,Payroll Only,Others,Full-Timer
+VIZ6292,Profile 30,employee3@company.com,Product Designer,Active,Singaporean,Full-Timer
+SQN6664,Profile 25,employee4@company.com,Lead Designer,Payroll Only,Singaporean,Contract
+ZKJ3801,Profile 1,employee5@company.com,Product Designer,Active,Singaporean,Intern
+EIV7420,Profile 13,employee6@company.com,Head of Growth,Active,Singaporean,Contract
+QNN6326,Profile 5,employee7@company.com,Lead Growth,Invite Sent,Foreigner,Contract
+VLB7404,Profile 20,employee8@company.com,Lead Designer,Active,Foreigner,Full-Timer
+UXE6901,Profile 10,employee9@company.com,Senior Marketer,Invite Sent,Foreigner,Part-Timer
+HDN1515,Profile 16,employee10@company.com,Senior Marketer,Payroll Only,Singaporean,Intern
+PVS1813,Profile 18,employee11@company.com,Product Manager,Active,Foreigner,Full-Timer
+PDH1623,Profile 30,employee12@company.com,Lead Designer,Payroll Only,Singaporean,Intern
+OKM0054,Profile 4,employee13@company.com,Head of Growth,Invite Sent,Singaporean,Full-Timer
+QBB1898,Profile 21,employee14@company.com,Lead Designer,Active,Singaporean,Intern
+VBL2970,Profile 23,employee15@company.com,Product Manager,Active,PR,Intern
+SAZ8814,Profile 26,employee16@company.com,Lead Growth,Active,Others,Part-Timer
+RGB9270,Profile 14,employee17@company.com,Head of Growth,Active,PR,Full-Timer
+LTH6512,Profile 21,employee18@company.com,Lead Designer,Invite Sent,Singaporean,Full-Timer
+PAL1138,Profile 16,employee19@company.com,Senior Marketer,Active,Singaporean,Part-Timer
+WQJ2541,Profile 19,employee20@company.com,Lead Growth,Active,Foreigner,Full-Timer
+IMX3828,Profile 1,employee21@company.com,Head of Growth,Payroll Only,Singaporean,Part-Timer
+UVS3867,Profile 13,employee22@company.com,Lead Growth,Active,PR,Full-Timer
+FJV7234,Profile 8,employee23@company.com,Product Manager,Active,Others,Contract
+JFX3523,Profile 21,employee24@company.com,Head of Growth,Active,Singaporean,Full-Timer
+XWV3680,Profile 30,employee25@company.com,Product Manager,Payroll Only,Singaporean,Intern
+TIC7549,Profile 16,employee26@company.com,Product Designer,Active,Singaporean,Full-Timer
+MLG6076,Profile 30,employee27@company.com,Product Manager,Payroll Only,Singaporean,Contract
+APA1915,Profile 2,employee28@company.com,Head of Growth,Active,Singaporean,Full-Timer
+QJM3294,Profile 13,employee29@company.com,Head of Growth,Active,PR,Full-Timer
+VJY6046,Profile 8,employee30@company.com,Lead Growth,Active,Foreigner,Part-Timer
+UGH5959,Profile 2,employee31@company.com,Head of Growth,Active,Singaporean,Full-Timer
+SKB2871,Profile 9,employee32@company.com,Senior Marketer,Payroll Only,Others,Full-Timer
+III7098,Profile 21,employee33@company.com,Senior Marketer,Payroll Only,Singaporean,Part-Timer
+HOT8247,Profile 7,employee34@company.com,Product Designer,Payroll Only,Singaporean,Full-Timer
+KPR2116,Profile 1,employee35@company.com,Head of Growth,Active,Foreigner,Full-Timer
+GBS1539,Profile 16,employee36@company.com,Head of Growth,Invite Sent,Singaporean,Part-Timer
+JRI9363,Profile 22,employee37@company.com,Product Manager,Active,Singaporean,Full-Timer
+YQJ6029,Profile 30,employee38@company.com,Lead Growth,Invite Sent,Foreigner,Intern
+RZO8574,Profile 10,employee39@company.com,Lead Growth,Active,Singaporean,Contract
+OTL5446,Profile 24,employee40@company.com,Senior Marketer,Active,Singaporean,Part-Timer
+CZN4585,Profile 2,employee41@company.com,Head of Growth,Payroll Only,Singaporean,Contract
+UMO1182,Profile 1,employee42@company.com,Head of Growth,Invite Sent,PR,Contract
+FSV5409,Profile 9,employee43@company.com,Senior Marketer,Active,PR,Contract
+HYG6499,Profile 30,employee44@company.com,Senior Marketer,Active,PR,Part-Timer
+LPO3165,Profile 5,employee45@company.com,Lead Designer,Active,PR,Intern
+QIZ4945,Profile 8,employee46@company.com,Head of Growth,Payroll Only,Foreigner,Part-Timer
+BKX8695,Profile 8,employee47@company.com,Product Designer,Invite Sent,Singaporean,Full-Timer
+VHP8644,Profile 12,employee48@company.com,Product Manager,Active,Singaporean,Full-Timer
+UYX7575,Profile 23,employee49@company.com,Product Designer,Invite Sent,Singaporean,Part-Timer
+FSS5264,Profile 29,employee50@company.com,Product Designer,Invite Sent,PR,Full-Timer
+IQO2111,Profile 14,employee51@company.com,Senior Marketer,Active,Foreigner,Intern
+XBV1539,Profile 11,employee52@company.com,Lead Designer,Active,Singaporean,Full-Timer
+DYP8429,Profile 29,employee53@company.com,Senior Marketer,Payroll Only,Foreigner,Part-Timer
+IRP4706,Profile 9,employee54@company.com,Product Manager,Invite Sent,Others,Full-Timer
+VOR1604,Profile 16,employee55@company.com,Senior Marketer,Payroll Only,PR,Contract
+VAL1395,Profile 25,employee56@company.com,Lead Designer,Invite Sent,Foreigner,Intern
+LXQ9094,Profile 10,employee57@company.com,Senior Marketer,Payroll Only,Foreigner,Part-Timer
+FCQ4331,Profile 27,employee58@company.com,Head of Growth,Active,PR,Full-Timer
+QPC0042,Profile 19,employee59@company.com,Lead Designer,Active,PR,Full-Timer
+IPS4684,Profile 20,employee60@company.com,Product Manager,Invite Sent,Singaporean,Full-Timer
+WFG5015,Profile 2,employee61@company.com,Product Manager,Payroll Only,Singaporean,Full-Timer
+JGX0938,Profile 21,employee62@company.com,Lead Growth,Payroll Only,Singaporean,Contract
+OVD5885,Profile 10,employee63@company.com,Product Designer,Active,PR,Contract
+KXK8900,Profile 6,employee64@company.com,Senior Marketer,Active,PR,Intern
+CRK7271,Profile 10,employee65@company.com,Lead Designer,Active,Singaporean,Full-Timer
+IIL0081,Profile 18,employee66@company.com,Product Designer,Active,Singaporean,Full-Timer
+TQY7664,Profile 13,employee67@company.com,Lead Designer,Invite Sent,PR,Full-Timer
+ZRM2776,Profile 15,employee68@company.com,Lead Designer,Payroll Only,Singaporean,Intern
+GYZ4491,Profile 14,employee69@company.com,Lead Growth,Active,Singaporean,Full-Timer
+MZV9507,Profile 24,employee70@company.com,Product Manager,Active,Singaporean,Intern
+UPR1429,Profile 27,employee71@company.com,Lead Growth,Active,Others,Full-Timer
+WVV4079,Profile 7,employee72@company.com,Product Manager,Payroll Only,Singaporean,Full-Timer
+NXW3258,Profile 29,employee73@company.com,Head of Growth,Active,Singaporean,Part-Timer
+NTE8891,Profile 14,employee74@company.com,Product Manager,Payroll Only,PR,Full-Timer
+TMW8074,Profile 11,employee75@company.com,Lead Growth,Payroll Only,Singaporean,Full-Timer
+NAE8111,Profile 7,employee76@company.com,Head of Growth,Invite Sent,Singaporean,Part-Timer
+OBQ3197,Profile 16,employee77@company.com,Lead Growth,Payroll Only,Singaporean,Full-Timer
+SNK9820,Profile 10,employee78@company.com,Product Manager,Active,Singaporean,Intern
+SQN2194,Profile 4,employee79@company.com,Product Designer,Payroll Only,Singaporean,Part-Timer
+SZQ0286,Profile 22,employee80@company.com,Product Manager,Invite Sent,Singaporean,Full-Timer
+APQ8803,Profile 10,employee81@company.com,Head of Growth,Payroll Only,Others,Contract
+CVV9741,Profile 5,employee82@company.com,Senior Marketer,Payroll Only,Singaporean,Part-Timer
+KCZ5843,Profile 25,employee83@company.com,Lead Designer,Payroll Only,PR,Full-Timer
+MRT7006,Profile 4,employee84@company.com,Lead Designer,Active,Others,Full-Timer
+PUS8820,Profile 12,employee85@company.com,Lead Designer,Active,Singaporean,Full-Timer
+BEI6896,Profile 6,employee86@company.com,Lead Designer,Invite Sent,Singaporean,Intern
+VHK0013,Profile 9,employee87@company.com,Lead Designer,Active,Singaporean,Part-Timer
+GQR3163,Profile 1,employee88@company.com,Product Manager,Payroll Only,PR,Full-Timer
+KXB3995,Profile 23,employee89@company.com,Lead Designer,Invite Sent,Foreigner,Part-Timer
+SQV1570,Profile 30,employee90@company.com,Product Manager,Payroll Only,Singaporean,Full-Timer
+XJQ9780,Profile 6,employee91@company.com,Senior Marketer,Invite Sent,Singaporean,Part-Timer
+WMI8751,Profile 8,employee92@company.com,Head of Growth,Payroll Only,Singaporean,Full-Timer
+YAA5473,Profile 30,employee93@company.com,Lead Designer,Active,PR,Full-Timer
+INE6834,Profile 19,employee94@company.com,Head of Growth,Payroll Only,Singaporean,Full-Timer
+EZT7370,Profile 21,employee95@company.com,Product Manager,Payroll Only,Singaporean,Part-Timer
+IPP7901,Profile 23,employee96@company.com,Product Manager,Active,PR,Full-Timer
+WJU4001,Profile 14,employee97@company.com,Product Designer,Payroll Only,Singaporean,Full-Timer
+MWJ2343,Profile 23,employee98@company.com,Lead Growth,Payroll Only,Singaporean,Full-Timer
+OHB6702,Profile 11,employee99@company.com,Lead Growth,Active,PR,Full-Timer
+NPM5502,Profile 11,employee100@company.com,Head of Growth,Invite Sent,PR,Full-Timer
