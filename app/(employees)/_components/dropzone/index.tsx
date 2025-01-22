@@ -7,8 +7,8 @@ import { UploadProgressBar } from './upload-progress-bar'
 interface DropzoneProps {
   isDragActive: boolean
   isSubmitting: boolean
-  getRootProps: () => any
-  getInputProps: () => any
+  getRootProps: () => unknown
+  getInputProps: () => unknown
   file: File | null
   removeFile: (e: React.MouseEvent) => void
   supportedFormats?: string[]
@@ -28,7 +28,7 @@ export const Dropzone = ({
   return (
     <>
       <div
-        {...getRootProps()}
+        {...(getRootProps() as React.DOMAttributes<HTMLDivElement>)}
         className={`w-full min-h-[230px] rounded-[16px] flex flex-col items-center justify-center p-6 cursor-pointer transition-all duration-200 bg-surface2 border-dashed-custom
       ${isDragActive ? 'border-dashed-custom-active' : 'border-dashed-custom'}`}
       >
@@ -43,7 +43,9 @@ export const Dropzone = ({
               transition={{ duration: 0.2 }}
               className="flex flex-col items-center"
             >
-              <input {...getInputProps()} />
+              <input
+                {...(getInputProps() as React.InputHTMLAttributes<HTMLInputElement>)}
+              />
               <Image
                 src="/upload-folder-icon.svg"
                 alt="Upload Icon"

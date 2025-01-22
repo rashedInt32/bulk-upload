@@ -47,7 +47,7 @@ export function SuccessModal({
           />
         </div>
         <h2 className="text-[20px] font-bold text-grey-700 leading-[32px]">
-          Congrats! You've successfully added all your employees!
+          Congrats! You&apos;ve successfully added all your employees!
         </h2>
         <p className="text-grey-700 mt-3 text-[18px] font-medium">
           Would you like to generate payroll?
@@ -56,7 +56,7 @@ export function SuccessModal({
 
       <div className="flex flex-col w-full sm:flex-row gap-2 sm:gap-4 mt-8">
         <Button variant="outline" className="flex-1" onClick={onClose}>
-          I'll do it later
+          I&apos;ll do it later
         </Button>
         <Button className="flex-1" onClick={onGeneratePayroll}>
           Generate Payroll

@@ -56,7 +56,7 @@ export async function parseFile(file: File): Promise<EmployeeData[]> {
         }
 
         // Validate required fields
-        if (!validateEmployeeData(jsonData)) {
+        if (!validateEmployeeData(jsonData as EmployeeData[])) {
           throw new Error('Invalid file format. Missing required fields.')
         }
 
@@ -82,7 +82,7 @@ export async function parseFile(file: File): Promise<EmployeeData[]> {
 /**
  * Validates that the parsed data has the required fields and is not empty
  */
-function validateEmployeeData(data: any[]): boolean {
+function validateEmployeeData(data: EmployeeData[]): boolean {
   if (!Array.isArray(data) || data.length === 0) return false
 
   const requiredFields = ['Employee ID', 'Email', 'Employee Profile']

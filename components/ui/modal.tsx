@@ -2,7 +2,6 @@
 
 import * as React from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
 interface ModalProps {

@@ -1,17 +1,18 @@
+import React from 'react' // ✅ Ensure React is imported for JSX
 import { EmployeeData } from '../types'
 import { Checkbox } from '@/components/ui/checkbox'
 
 export interface TableColumn {
-  key: keyof EmployeeData
+  key: keyof EmployeeData | 'select' // ✅ Ensure 'select' is valid
   label: string
   width?: string
-  render?: (value: any, row: EmployeeData) => React.ReactNode
+  render?: (value: unknown, row: EmployeeData) => React.ReactNode
   renderHeader?: () => React.ReactNode
 }
 
 export const TABLE_COLUMNS: TableColumn[] = [
   {
-    key: 'select',
+    key: 'select', // ✅ Ensure this is allowed in EmployeeData
     label: '',
     width: '48px',
     renderHeader: () => (
@@ -19,7 +20,7 @@ export const TABLE_COLUMNS: TableColumn[] = [
         <Checkbox />
       </div>
     ),
-    render: (_, row) => (
+    render: () => (
       <div className="flex items-center justify-center">
         <Checkbox />
       </div>
@@ -29,7 +30,7 @@ export const TABLE_COLUMNS: TableColumn[] = [
     key: 'Employee ID',
     label: 'Employee ID',
     width: '180px',
-    render: (value) => (
+    render: (value: unknown) => (
       <a
         href="#"
         className="font-semibold text-primary underline hover:text-primary/80 text-sm"
@@ -38,7 +39,7 @@ export const TABLE_COLUMNS: TableColumn[] = [
           console.log('Employee ID clicked:', value)
         }}
       >
-        {value || '-'}
+        {String(value) || '-'}
       </a>
     ),
   },
@@ -46,11 +47,12 @@ export const TABLE_COLUMNS: TableColumn[] = [
     key: 'Employee Profile',
     label: 'Employee Profile',
     width: '250px',
-    render: (value) => {
-      if (!value) return '-'
+    render: (value: unknown) => {
+      if (!value || typeof value !== 'string') return '-'
+
       const initials = value
         .split(' ')
-        .map((n: string) => n[0])
+        .map((n) => n[0])
         .join('')
         .toUpperCase()
 
@@ -70,9 +72,9 @@ export const TABLE_COLUMNS: TableColumn[] = [
     key: 'Email',
     label: 'Email',
     width: '250px',
-    render: (value) => (
+    render: (value: unknown) => (
       <span className="text-grey-900 truncate block text-sm font-semibold">
-        {value || '-'}
+        {String(value) || '-'}
       </span>
     ),
   },
@@ -80,9 +82,9 @@ export const TABLE_COLUMNS: TableColumn[] = [
     key: 'Role',
     label: 'Role',
     width: '210px',
-    render: (value) => (
+    render: (value: unknown) => (
       <span className="capitalize text-sm text-grey-900 font-semibold">
-        {value || '-'}
+        {String(value) || '-'}
       </span>
     ),
   },
@@ -90,9 +92,9 @@ export const TABLE_COLUMNS: TableColumn[] = [
     key: 'Status',
     label: 'Status',
     width: '186px',
-    render: (value) => {
-      const status = value?.toLowerCase() || 'pending'
-      const styles = {
+    render: (value: unknown) => {
+      const status = typeof value === 'string' ? value.toLowerCase() : 'pending'
+      const styles: Record<string, string> = {
         active: 'bg-primary/20 text-primary',
         'payroll only': 'bg-grey-200 text-grey-400',
         'invite sent': 'bg-purple-600/15 text-purple-600',
@@ -101,11 +103,11 @@ export const TABLE_COLUMNS: TableColumn[] = [
       return (
         <span
           className={`px-2.5 py-1 pr-[12px] rounded-[12px] text-xs font-semibold capitalize inline-flex items-center gap-2 ${
-            styles[status as keyof typeof styles] || styles['payroll only']
+            styles[status] || styles['payroll only']
           }`}
         >
           <span
-            className="hidden  w-2 h-2 rounded-full mx-1 xl:flex"
+            className="hidden w-2 h-2 rounded-full mx-1 xl:flex"
             style={{
               backgroundColor: 'currentColor',
             }}
@@ -156,9 +158,9 @@ export function filterTableData(
     visibleColumns.reduce(
       (acc, col) => ({
         ...acc,
-        [col.key]: row[col.key],
+        [col.key]: row[col.key as keyof EmployeeData],
       }),
-      {}
+      {} as Partial<EmployeeData>
     )
   )
 }

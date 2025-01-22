@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export interface FileError {
   type: 'size' | 'file' | 'empty' | 'upload'
   text: string

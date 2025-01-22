@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Checkbox } from '@/components/ui/checkbox'
 import { ChevronsUpDown, ChevronUp, ChevronDown } from 'lucide-react'
 import { EmployeeData } from '../../types'

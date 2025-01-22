@@ -4,14 +4,12 @@ import { analyzeDataByKey } from '../../_utils/analyzeData'
 import { CircleChart } from './circle-chart'
 import { LineChart } from './line-chart'
 import { ParabolicChart } from './parabolic-chart'
-import { CHART_COLOR_VALUES, CHART_COLORS } from './constants'
+import { EmployeeData } from '../../types'
 
 interface MetricItemProps {
   count: number
   value: string
   variant: 'primary' | 'secondary' | 'tertiary' | 'quaternary'
-  total?: number
-  color: string
 }
 
 const variantStyles = {
@@ -21,13 +19,7 @@ const variantStyles = {
   quaternary: 'before:bg-grey-300',
 }
 
-function MetricItem({
-  count,
-  value,
-  variant,
-  total = 0,
-  color,
-}: MetricItemProps) {
+function MetricItem({ count, value, variant }: MetricItemProps) {
   return (
     <div
       className={cn(
@@ -89,10 +81,6 @@ function AnalyticsSection({
         {sortedMetrics.map((metric, index) => (
           <div key={metric.value} className="pr-1">
             <MetricItem
-              color={
-                CHART_COLOR_VALUES[index] ||
-                CHART_COLOR_VALUES[CHART_COLOR_VALUES.length - 1]
-              }
               count={metric.count}
               value={metric.value}
               variant={
@@ -104,7 +92,6 @@ function AnalyticsSection({
                   ? 'tertiary'
                   : 'quaternary'
               }
-              total={highestCount}
             />
           </div>
         ))}
@@ -114,7 +101,12 @@ function AnalyticsSection({
 }
 
 interface AnalyticsCardProps {
-  data: any[]
+  data: Array<{
+    nationality?: string
+    employmentType?: string
+    status?: string
+    [key: string]: string | undefined
+  }>
   analyzeKey: 'Nationality' | 'Employment Type' | 'Status'
   className?: string
   chartType?: 'circle' | 'parabolic' | 'line'
@@ -139,7 +131,7 @@ export function AnalyticsCard({
     }
   }
 
-  const analyzedData = analyzeDataByKey(data, analyzeKey)
+  const analyzedData = analyzeDataByKey(data as EmployeeData[], analyzeKey)
 
   return (
     <div

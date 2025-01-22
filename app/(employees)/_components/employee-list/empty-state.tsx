@@ -15,7 +15,8 @@ export function EmptyState() {
         No employees found
       </p>
       <p className="text-grey-400 text-sm">
-        Try adjusting your search or filters to find what you're looking for.
+        Try adjusting your search or filters to find what you&apos;re looking
+        for.
       </p>
     </motion.div>
   )

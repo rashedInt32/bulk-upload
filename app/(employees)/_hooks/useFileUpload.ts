@@ -3,7 +3,7 @@ import { useState, useCallback } from 'react'
 import { useDropzone } from 'react-dropzone'
 import { parseFile } from '../_utils/fileParser'
 import { useStore } from './useStore'
-import type { FileError, EmployeeData, FileUploadState } from '../types'
+import type { EmployeeData, FileUploadState } from '../types'
 
 export function useFileUpload() {
   const { setFileData } = useStore((state) => state)
@@ -18,6 +18,7 @@ export function useFileUpload() {
     setState((prev) => ({ ...prev, ...partial }))
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const onDrop = useCallback((acceptedFiles: File[], rejectedFiles: any[]) => {
     setPartialState({ error: null })
 
@@ -93,11 +94,14 @@ export function useFileUpload() {
       })
 
       setFileData(parsedData as EmployeeData[])
-    } catch (err: any) {
+    } catch (err: unknown) {
       setPartialState({
         error: {
           type: 'upload',
-          text: err.message || 'Failed to process file. Please try again.',
+          text:
+            err instanceof Error
+              ? err.message
+              : 'Failed to process file. Please try again.',
         },
       })
     } finally {
