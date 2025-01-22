@@ -103,7 +103,9 @@ export function EmployeeList({ data }: EmployeeListProps) {
                   onSelectAll={handleSelectAll}
                   sortConfig={sortConfig}
                   onSort={handleSort}
-                  headerCheckboxRef={headerCheckboxRef}
+                  headerCheckboxRef={
+                    headerCheckboxRef as React.RefObject<HTMLButtonElement>
+                  }
                   isAllSelected={isAllSelected}
                 />
 

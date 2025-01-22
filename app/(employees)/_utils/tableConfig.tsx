@@ -150,7 +150,7 @@ export function filterTableData(
   data: EmployeeData[],
   columns: TableColumn[]
 ): Partial<EmployeeData>[] {
-  const visibleColumns = columns.filter((col) => col.visible)
+  const visibleColumns = columns.filter((col) => col.key !== 'select')
 
   return data.map((row) =>
     visibleColumns.reduce(

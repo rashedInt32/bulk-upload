@@ -3,7 +3,7 @@ import { EmployeeData } from '../types'
 
 export function useTableSelection(paginatedData: EmployeeData[]) {
   const [selectedRows, setSelectedRows] = useState<Set<string>>(new Set())
-  const headerCheckboxRef = useRef<HTMLButtonElement>(null)
+  const headerCheckboxRef = useRef<HTMLInputElement>(null)
 
   const handleSelectAll = (checked: boolean) => {
     if (checked) {
