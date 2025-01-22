@@ -1,3 +1,4 @@
+'use client'
 import { EmployeeData } from '../../types'
 import { TABLE_COLUMNS } from '../../_utils/tableConfig'
 import { AnimatePresence, motion } from 'framer-motion'

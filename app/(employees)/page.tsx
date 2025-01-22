@@ -1,3 +1,4 @@
+'use client'
 import { Employees } from './employees'
 
 export default function EmployeesPage() {

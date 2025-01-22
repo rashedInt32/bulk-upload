@@ -1,3 +1,4 @@
+'use client'
 import { cn } from '@/lib/utils'
 import { analyzeDataByKey } from '../../_utils/analyzeData'
 import { CircleChart } from './circle-chart'
