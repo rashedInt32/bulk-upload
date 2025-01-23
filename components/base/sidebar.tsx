@@ -109,12 +109,7 @@ export function Sidebar({ className, children }: SidebarProps) {
                       'bg-surface2 border font-bold border-line text-gray-900'
                   )}
                 >
-                  <item.icon
-                    className={cn(
-                      'w-5 h-5 stroke-[1.5px] ',
-                      item.iconClassName
-                    )}
-                  />
+                  <item.icon className="w-5 h-5 stroke-[1.5px]" />
                   <span className="text-[15px]">{item.label}</span>
                 </Link>
               ))}
