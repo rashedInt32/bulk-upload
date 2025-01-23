@@ -11,7 +11,7 @@ export default function BaseWrapper({
   const { fileData } = useStore((state) => state)
 
   return (
-    <div className="flex min-h-screen bg-surface2 w-full">
+    <div className="flex bg-surface2 w-full">
       <Sidebar>{/* Sidebar content goes here */}</Sidebar>
       <div className="flex-1 flex flex-col">
         <Header
@@ -22,7 +22,7 @@ export default function BaseWrapper({
             // Handle button click
           }}
         />
-        <main className="w-full p-8">{children}</main>
+        <main className="w-full p-8 relative">{children}</main>
       </div>
     </div>
   )

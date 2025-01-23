@@ -1,4 +1,5 @@
 'use client'
+import { useState, useEffect } from 'react'
 import { Dropzone } from './_components/dropzone'
 import { UploadModal } from './_components/upload-modal'
 import { EmptyEmployeeList } from './_components/empty-employee-list'
@@ -7,7 +8,8 @@ import { useFileUpload } from './_hooks/useFileUpload'
 import { AnalyticsCard } from './_components/analytics-card'
 import { useStore } from './_hooks/useStore'
 import { SuccessModal } from './_components/success-modal'
-import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
+import { Loader } from '@/components/ui/loader'
 
 export function Employees() {
   const { fileData } = useStore((state) => state)
@@ -25,11 +27,17 @@ export function Employees() {
     resetState,
   } = useFileUpload()
   const [showSuccess, setShowSuccess] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
-  // Show success modal when fileData is loaded
+  // Show loading state and then success modal when fileData is loaded
   useEffect(() => {
     if (fileData && fileData.length > 0) {
-      setShowSuccess(true)
+      setIsLoading(true)
+      // Simulate API call delay
+      setTimeout(() => {
+        setIsLoading(false)
+        setShowSuccess(true)
+      }, 1000)
     }
   }, [fileData])
 
@@ -43,10 +51,16 @@ export function Employees() {
     setShowSuccess(false)
   }
 
+  if (isLoading) return <Loader />
+
   return (
     <>
       {fileData && fileData.length > 0 ? (
-        <>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.2 }}
+        >
           <div className="flex gap-4 pb-8">
             <AnalyticsCard
               data={fileData}
@@ -68,7 +82,7 @@ export function Employees() {
             />
           </div>
           <EmployeeList data={fileData} />
-        </>
+        </motion.div>
       ) : (
         <EmptyEmployeeList onClick={() => setIsModalOpen(true)} />
       )}
