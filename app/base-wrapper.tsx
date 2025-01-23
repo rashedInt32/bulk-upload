@@ -1,9 +1,9 @@
 'use client'
 import { Sidebar } from '@/components/base/sidebar'
 import { Header } from '@/components/base/header'
-import { useStore } from './_hooks/useStore'
+import { useStore } from '@/app/(employees)/_hooks/useStore'
 
-export default function BulkUploadLayout({
+export default function BaseWrapper({
   children,
 }: {
   children: React.ReactNode
@@ -11,9 +11,9 @@ export default function BulkUploadLayout({
   const { fileData } = useStore((state) => state)
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen bg-surface2 w-full">
       <Sidebar>{/* Sidebar content goes here */}</Sidebar>
-      <div className="flex-1 flex flex-col bg-surface-2">
+      <div className="flex-1 flex flex-col">
         <Header
           title="Employees"
           buttonLabel="Add Employee"
@@ -22,7 +22,7 @@ export default function BulkUploadLayout({
             // Handle button click
           }}
         />
-        <main className="bg-surface2">{children}</main>
+        <main className="w-full p-8">{children}</main>
       </div>
     </div>
   )
