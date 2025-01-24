@@ -12,11 +12,6 @@ export function Sample({
   description = 'You can download the attached example and use them as a starting point for your own file.',
   fileName = 'XLSX',
 }: SampleProps) {
-  const handleDownload = () => {
-    // Direct download using window.location
-    window.location.href = '/sample/example-sample.xlsx'
-  }
-
   return (
     <div className="w-full flex items-center justify-between mt-6 p-4 bg-grey-100 rounded-[12px] mb-2">
       <div className="flex items-center gap-3">
@@ -34,21 +29,22 @@ export function Sample({
           </p>
         </div>
       </div>
-      <Button
-        variant="outline"
-        size="sm"
-        className="gap-2"
-        onClick={handleDownload}
+      <a
+        href="/sample/example-sample.xlsx"
+        download
+        className="inline-flex items-center gap-2"
       >
-        <Image
-          src="/download-icon.svg"
-          alt="Download Icon"
-          width={16}
-          height={16}
-          priority
-        />
-        Download {fileName}
-      </Button>
+        <Button variant="outline" size="sm" className="gap-2">
+          <Image
+            src="/download-icon.svg"
+            alt="Download Icon"
+            width={16}
+            height={16}
+            priority
+          />
+          Download {fileName}
+        </Button>
+      </a>
     </div>
   )
 }
