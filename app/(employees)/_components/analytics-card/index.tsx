@@ -5,7 +5,6 @@ import { CircleChart } from './circle-chart'
 import { LineChart } from './line-chart'
 import { ParabolicChart } from './parabolic-chart'
 import { EmployeeData } from '../../types'
-import { CHART_COLORS } from './constants'
 
 interface MetricItemProps {
   count: number
