@@ -25,12 +25,15 @@ export function ParabolicChart({ metrics, size = 134 }: ParabolicChartProps) {
     const percentage = metric.count / total
     const segmentLength = visiblePortion * percentage - gapSize
 
+    const color =
+      metric.value.toLowerCase() === 'payroll only'
+        ? CHART_COLOR_VALUES[3]
+        : CHART_COLOR_VALUES[index] || CHART_COLOR_VALUES[0]
+
     const segment = {
       offset: currentOffset,
       length: segmentLength,
-      color:
-        CHART_COLOR_VALUES[index] ||
-        CHART_COLOR_VALUES[CHART_COLOR_VALUES.length - 1],
+      color: color,
     }
 
     currentOffset += segmentLength + gapSize

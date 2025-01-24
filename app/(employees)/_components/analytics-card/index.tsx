@@ -5,6 +5,7 @@ import { CircleChart } from './circle-chart'
 import { LineChart } from './line-chart'
 import { ParabolicChart } from './parabolic-chart'
 import { EmployeeData } from '../../types'
+import { CHART_COLORS } from './constants'
 
 interface MetricItemProps {
   count: number
@@ -13,10 +14,10 @@ interface MetricItemProps {
 }
 
 const variantStyles = {
-  primary: 'before:bg-primary',
-  secondary: 'before:bg-yellow-400',
-  tertiary: 'before:bg-purple-400',
-  quaternary: 'before:bg-grey-300',
+  primary: 'before:bg-[#02B9B0]',
+  secondary: 'before:bg-[#FAC905]',
+  tertiary: 'before:bg-[#B774FC]',
+  quaternary: 'before:bg-[#B3BEBE]',
 }
 
 function MetricItem({ count, value, variant }: MetricItemProps) {
@@ -26,7 +27,9 @@ function MetricItem({ count, value, variant }: MetricItemProps) {
         'pl-3 pr-1 flex  items-center gap-2 relative',
         'before:content-[""] before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2',
         'before:w-1 before:h-4 before:rounded-[4px]',
-        variantStyles[variant]
+        value.toLowerCase() === 'payroll only'
+          ? variantStyles.quaternary
+          : variantStyles[variant]
       )}
     >
       <span className="text-sm font-medium text-grey-700">{count}</span>
