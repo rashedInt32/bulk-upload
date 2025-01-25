@@ -85,7 +85,15 @@ export async function parseFile(file: File): Promise<EmployeeData[]> {
 function validateEmployeeData(data: EmployeeData[]): boolean {
   if (!Array.isArray(data) || data.length === 0) return false
 
-  const requiredFields = ['Employee ID', 'Email', 'Employee Profile']
+  const requiredFields = [
+    'Employee ID',
+    'Email',
+    'Employee Profile',
+    'Nationality',
+    'Employment Type',
+    'Role',
+    'Status',
+  ]
   const firstRow = data[0]
 
   // Check if any row is completely empty
