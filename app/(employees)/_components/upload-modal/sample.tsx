@@ -1,16 +1,16 @@
-import Image from 'next/image'
-import { Button } from '@/components/ui/button'
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
 
 interface SampleProps {
-  title?: string
-  description?: string
-  fileName?: string
+  title?: string;
+  description?: string;
+  fileName?: string;
 }
 
 export function Sample({
-  title = 'Table Example',
-  description = 'You can download the attached example and use them as a starting point for your own file.',
-  fileName = 'XLSX',
+  title = "Table Example",
+  description = "You can download the attached example and use them as a starting point for your own file.",
+  fileName = "XLSX",
 }: SampleProps) {
   return (
     <div className="w-full flex items-center justify-between mt-6 p-4 bg-grey-100 rounded-[12px] mb-2">
@@ -30,7 +30,7 @@ export function Sample({
         </div>
       </div>
       <a
-        href="/sample/example-sample.xlsx"
+        href="/sample/mock_employee_data_v2.xlsx"
         download
         className="inline-flex items-center gap-2"
       >
@@ -46,5 +46,5 @@ export function Sample({
         </Button>
       </a>
     </div>
-  )
+  );
 }
